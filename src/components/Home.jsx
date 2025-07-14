@@ -26,8 +26,6 @@ function Home() {
 
       <motion.div
         className="flex-1 max-w-sm w-full z-10"
-        // initial={{ x: 100, opacity: 0 }}
-        // animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.2, ease: 'easeOut' }}
       >
         <img
