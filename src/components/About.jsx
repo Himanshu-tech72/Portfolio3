@@ -5,7 +5,7 @@ const About = () => {
   return (
      <motion.section
       id="about"
-      className="p-8 max-w-4xl mx-auto text-center"
+      className="p-8 max-w-4xl mx-auto text-center bg-black"
       initial={{ x: -100, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       transition={{ duration: 1, ease: 'easeOut' }}
