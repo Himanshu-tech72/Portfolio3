@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import './App.css'
 import './index.css'
 import AnimatedBackground from './components/AnimatedBackground';
 import { motion } from "motion/react"
@@ -15,7 +16,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="min-h-screen flex flex-col bg-white w-full">
+    <div className="min-h-screen flex flex-col bg-black w-full">
       <AnimatedBackground />
       <BrowserRouter>
         <motion.nav

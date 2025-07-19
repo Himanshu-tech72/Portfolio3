@@ -5,7 +5,7 @@ function Footer() {
   return (
      <motion.footer
       id="contact"
-      className="p-4 text-center bg-white mt-8 border-t"
+      className="p-4 text-center bg-black mt-8 border-t"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
