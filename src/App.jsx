@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import './index.css'
 import AnimatedBackground from './components/AnimatedBackground';
 import { motion } from "motion/react"
 import { Home as HomeIcon, User, Folder, Mail } from 'lucide-react';
