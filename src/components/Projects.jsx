@@ -1,19 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from "framer-motion";
+import React from 'react'
+import { motion } from "framer-motion"; // Ensure you have framer-motion installed
 
 function Projects() {
-  const [projects, setProjects] = useState([]);
+  
+//     const projects = [
+//     { title: "Portfolio Website", description: "A modern portfolio built with React and Tailwind CSS." },
+//     { title: "Job Portal", description: "Get real-time Job updates using Jobify API." }
+//   ];
 
-  useEffect(() => {
-    fetch('https://your-render-url.onrender.com/projects')  // 🔁 Replace with your deployed server URL
-      .then(res => res.json())
-      .then(data => setProjects(data))
-      .catch(err => console.error('Failed to fetch projects:', err));
-  }, []);
+//   return (
+//     <section id="projects" className="p-8 bg-gray-100">
+//       <h2 className="text-3xl font-semibold mb-8 text-center">Projects</h2>
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//         {projects.map((project, index) => (
+//           <div key={index} className="p-4 bg-white shadow rounded-lg">
+//             <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+//             <p>{project.description}</p>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+
+const projects = [
+    { title: "Portfolio Website", description: "A modern portfolio built with React and Tailwind CSS." },
+    { title: "Job Portal", description: "Get real-time Job updates using Jobify API." }
+  ];
 
   return (
     <section id="projects" className="p-8 bg-gray-100">
-      <h2 className="text-3xl font-semibold mb-8 text-center text-black">Projects</h2>
+      <h2 className="text-3xl font-semibold mb-8 text-center">Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <motion.div
@@ -24,21 +39,13 @@ function Projects() {
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold mb-2">{project.name}</h3>
-            <p className="mb-2 text-sm text-gray-600">{project.description}</p>
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 underline text-sm"
-            >
-              View Repository →
-            </a>
+            <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+            <p>{project.description}</p>
           </motion.div>
         ))}
       </div>
     </section>
   );
-}
+};
 
 export default Projects;
