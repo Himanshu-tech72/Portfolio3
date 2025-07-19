@@ -1,30 +1,22 @@
-import React from 'react'
-import { motion } from "framer-motion"; // Ensure you have framer-motion installed
+import React, { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
 
 function Projects() {
-  
-//     const projects = [
-//     { title: "Portfolio Website", description: "A modern portfolio built with React and Tailwind CSS." },
-//     { title: "Job Portal", description: "Get real-time Job updates using Jobify API." }
-//   ];
+  const [projects, setProjects] = useState([]);
 
-//   return (
-//     <section id="projects" className="p-8 bg-gray-100">
-//       <h2 className="text-3xl font-semibold mb-8 text-center">Projects</h2>
-//       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//         {projects.map((project, index) => (
-//           <div key={index} className="p-4 bg-white shadow rounded-lg">
-//             <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-//             <p>{project.description}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-
-const projects = [
-    { title: "Portfolio Website", description: "A modern portfolio built with React and Tailwind CSS." },
-    { title: "Job Portal", description: "Get real-time Job updates using Jobify API." }
-  ];
+  useEffect(() => {
+    fetch("https://api.github.com/users/himanshu-tech72/repos") 
+      .then(res => res.json())
+      .then(data => {
+        const simplified = data.map(repo => ({
+          name: repo.name,
+          description: repo.description,
+          url: repo.html_url
+        }));
+        setProjects(simplified);
+      })
+      .catch(err => console.error("Error fetching GitHub repos:", err));
+  }, []);
 
   return (
     <section id="projects" className="p-8 bg-gray-100">
@@ -39,13 +31,21 @@ const projects = [
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-            <p>{project.description}</p>
+            <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+            <p className="mb-2 text-sm text-gray-600">{project.description || "No description"}</p>
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline text-sm"
+            >
+              View Repository →
+            </a>
           </motion.div>
         ))}
       </div>
     </section>
   );
-};
+}
 
 export default Projects;
